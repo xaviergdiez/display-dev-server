@@ -229,7 +229,7 @@ export default function Previews({ data }) {
               </Tooltip>
             ) : null}
             <Box className="logos" display="flex" gap="0px" alignItems="center">
-              <img src="Monks-Logo_Small_White.png" />
+              <img src="x-code-logo.svg" />
               {data.client && (
                 <Box display="flex" gap="10px" alignItems="center" sx={{ marginRight: "10px" }}>
                   <span>&times;</span>

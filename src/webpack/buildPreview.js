@@ -147,7 +147,7 @@ module.exports = async function buildPreview(result, qualities, outputDir) {
       const filename = path.basename(file)
       return ![
         'Favicon_black_32X32.png',
-        'Monks-Logo_Small_White.png',
+        'x-code-logo.svg',
       ].includes(filename)
     })
     .map(file => path.basename(file).replace(path.extname(file), ''))
