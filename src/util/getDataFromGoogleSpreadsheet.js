@@ -15,9 +15,9 @@ module.exports = async function getDataFromGoogleSpreadsheet(contentSource) {
   console.log(`${chalk.green('✔')} gathering google sheets data for ${id}`);
   cacheSpreadSheets[id] = new GoogleSpreadsheet(id);
 
-  if (contentSource.hasOwnProperty('apiKey') || process.env.displayMonks_googleApiKey) {
+  if (contentSource.hasOwnProperty('apiKey') || process.env.DISPLAY_GOOGLE_API_KEY) {
     console.log(`${chalk.green('✔')} using API key`);
-    const apiKey = contentSource.apiKey || process.env.displayMonks_googleApiKey;
+    const apiKey = contentSource.apiKey || process.env.DISPLAY_GOOGLE_API_KEY;
     cacheSpreadSheets[id].useApiKey(apiKey);
   } else {
     console.log(`${chalk.green('✔')} no API key found, defaulting to OAuth2`);

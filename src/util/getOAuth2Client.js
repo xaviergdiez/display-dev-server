@@ -32,14 +32,14 @@ module.exports = async function getOAuth2Client() {
       type: 'input',
       name: 'clientId',
       message: 'Client ID?',
-      default: process.env.displayMonks_clientId,
+      default: process.env.DISPLAY_CLIENT_ID,
     });
 
     const { clientSecret } = await inquirer.prompt({
       type: 'input',
       name: 'clientSecret',
       message: 'Client Secret?',
-      default: process.env.displayMonks_clientSecret,
+      default: process.env.DISPLAY_CLIENT_SECRET,
     });
 
     data = {
