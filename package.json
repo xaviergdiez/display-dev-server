@@ -1,6 +1,6 @@
 {
   "name": "@whoisxavier/display-dev-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Display advertising development server by x-code.studio - Preview and compile ads via webpack.",
   "scripts": {
     "preview-dev": "cd ./src/preview && npm run dev",
