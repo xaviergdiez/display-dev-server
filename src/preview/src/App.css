@@ -1,0 +1,167 @@
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fff #121212;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #121212;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 1rem;
+    border: 3px solid #121212;
+  }
+}
+
+.gs-dev-tools {
+  container-type: inline-size;
+}
+
+.gs-dev-tools .in-point, .gs-dev-tools .out-point {
+  display: none !important;
+}
+
+.gs-dev-tools .logo {
+  display: none !important;
+}
+
+.gs-dev-tools label input, .gs-dev-tools label select {
+  display: none !important;
+}
+
+.gs-dev-tools .time-scale {
+  display: none !important;
+}
+
+.gs-dev-tools .select-animation {
+  display: none !important;
+}
+
+.gs-dev-tools {
+  position: static !important;
+}
+
+.gs-hit-area {
+  display: none !important;
+}
+
+.gs-dev-tools.minimal {
+  display: block !important;
+}
+
+.gs-dev-tools.minimal .gs-bottom {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+}
+
+.gs-dev-tools.minimal .play-pause {
+  margin: 0 !important;
+}
+
+.gs-dev-tools .timeline {
+  margin: 0  !important;
+}
+
+.gs-dev-tools .gs-bottom-right {
+  display: flex !important;
+  line-height: 1 !important;
+}
+
+.gs-dev-tools .timeline {
+  top: unset !important;
+  transform: unset !important;
+}
+
+.gs-dev-tools .gs-bottom {
+  overflow: hidden !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.gs-dev-tools .timeline-track,
+.gs-dev-tools .progress-bar {
+  overflow: hidden !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.gs-dev-tools .timeline-track,
+.gs-dev-tools .progress-bar {
+  background-color: #90caf9 !important;
+}
+
+.gs-dev-tools .playhead {
+  background-color: #008cff !important;
+  height: 18px !important;
+  width: 18px !important;
+  border: none !important;
+}
+
+/* all */
+@container (min-width: 125px) {
+  .gs-dev-tools.minimal .rewind,
+  .gs-dev-tools.minimal .loop,
+  .gs-dev-tools.minimal .play-pause {
+    display: block !important;
+    flex-grow: 1 !important;
+    height: 18px !important;
+  }
+  .gs-dev-tools.minimal .play-pause {
+    height: 24px !important;
+  }
+  .gs-dev-tools .time-container {
+    font-size: 17px !important;
+  }
+
+  /* 160x600 */
+  @container (max-width: 265px) {
+    .gs-dev-tools .gs-bottom {
+      height: 64px !important;
+    }
+    .gs-dev-tools.minimal .rewind,
+    .gs-dev-tools.minimal .loop,
+    .gs-dev-tools.minimal .play-pause {
+      margin-bottom: 20px !important;
+    }
+    .gs-dev-tools.minimal .play-pause {
+      height: 24px !important;
+    }
+    .gs-dev-tools .gs-bottom-right {
+      width: 100% !important;
+      justify-content: center !important;
+      position: absolute !important;
+      bottom: 5px;
+    }
+    .gs-dev-tools .time-container {
+      font-size: 14px !important;
+    }
+  }
+}
+
+/* 120x600 */
+@container (max-width: 124px) {
+  .gs-dev-tools .gs-bottom {
+    height: 48px !important;
+  }
+  .gs-dev-tools .gs-bottom-right {
+    width: 100% !important;
+    justify-content: center !important;
+    position: absolute !important;
+    bottom: 5px;
+  }
+  .gs-dev-tools .time-container {
+    font-size: 9px !important;
+  }
+  .gs-dev-tools.minimal .rewind,
+  .gs-dev-tools.minimal .loop,
+  .gs-dev-tools.minimal .play-pause {
+    margin-bottom: 15px !important;
+  }
+}

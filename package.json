@@ -1,0 +1,78 @@
+{
+  "name": "@whoisxavier/display-dev-server",
+  "version": "1.0.0",
+  "description": "Display advertising development server by x-code.studio - Preview and compile ads via webpack.",
+  "scripts": {
+    "preview-dev": "cd ./src/preview && npm run dev",
+    "preview-build": "cd ./src/preview && npm run build"
+  },
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 8"
+  },
+  "bin": {
+    "dds": "cli/displayDevServer.js"
+  },
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xaviergdiez/display-dev-server.git"
+  },
+  "author": "Xavier Diez <hello@whoisxavier.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xaviergdiez/display-dev-server/issues"
+  },
+  "homepage": "https://github.com/xaviergdiez/display-dev-server#readme",
+  "dependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "archiver": "^5.3.1",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "btoa": "^1.2.1",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "cli-spinner": "^0.2.10",
+    "commander": "^10.0.0",
+    "css-loader": "^6.7.3",
+    "deepmerge": "^4.3.0",
+    "esbuild-loader": "^3.0.1",
+    "express": "^4.18.2",
+    "file-loader": "^6.2.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "fs-extra": "^11.1.0",
+    "glob-promise": "^6.0.2",
+    "google-auth-library": "^8.7.0",
+    "google-spreadsheet": "^3.3.0",
+    "handlebars": "^4.7.7",
+    "handlebars-loader": "^1.7.3",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "image-size": "^1.2.0",
+    "inquirer": "^8.2.4",
+    "node-html-parser": "^6.1.5",
+    "open": "^8.4.2",
+    "portfinder": "^1.0.32",
+    "postcss-calc": "^8.2.4",
+    "postcss-css-variables": "^0.18.0",
+    "postcss-import": "^15.1.0",
+    "postcss-loader": "^7.0.2",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^8.0.1",
+    "resolve": "^1.8.1",
+    "sanitize-filename": "^1.6.3",
+    "sass": "^1.78.0",
+    "sass-loader": "^16.0.1",
+    "server-destroy": "^1.0.1",
+    "sharp": "^0.31.3",
+    "subset-font": "^2.0.0",
+    "svgo": "^3.0.2",
+    "terser-webpack-plugin": "^5.3.6",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.75.0",
+    "webpack-dev-middleware": "^6.0.1",
+    "webpack-hot-middleware": "^2.25.3",
+    "webpack-virtual-modules": "^0.5.0",
+    "worker-farm": "^1.7.0"
+  }
+}

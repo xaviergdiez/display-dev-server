@@ -1,0 +1,40 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #161b22;
+
+  padding: 0px 40px;
+
+  .pagination {
+    color: #c9d1d9;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filterSelect {
+    width: 300px;
+  }
+}
+
+.previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 20px 40px;
+
+  .cardButton {
+    overflow-wrap: anywhere;
+  }
+
+  .previewCard {
+    height: fit-content;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

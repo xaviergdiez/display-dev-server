@@ -1,0 +1,127 @@
+{
+  "$id": "https://raw.githubusercontent.com/mediamonks/display-dev-server/master/src/schema/richmediarc.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "definitions": {},
+  "properties": {
+    "parent": {
+      "description": "Relative path from this config to another config. Like ../../.richmediarc or ../../global.config.js",
+      "type": "string",
+      "format": "uri-reference"
+    },
+    "content": {
+      "additionalProperties": true,
+      "properties": {}
+    },
+    "settings": {
+      "properties": {
+        "browserSupport": {
+          "description": "Which browsers are supported, please remove 'not ie 11' from the list if you want to support it",
+          "type": "array",
+          "items": [
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "optimizations": {
+          "type": "object",
+          "properties": {
+            "css": {
+              "type": "boolean"
+            },
+            "image": {
+              "type": ["boolean", "object"],
+              "properties": {
+                "minimizer": {
+                  "type": "string"
+                }
+              }
+            },
+            "html": {
+              "type": "boolean"
+            },
+            "js": {
+              "type": "boolean"
+            }
+          }
+        },
+        "useOriginalImageName": {
+          "type": "boolean"
+        },
+        "useOriginalFileNames": {
+          "type": "boolean"
+        },
+        "entry": {
+          "description": "When entry is not specified the build script will ignore the config as a build point.",
+          "properties": {
+            "js": {
+              "description": "Relative path from this config to the js file. Like ../../src/main.js",
+              "type": "string",
+              "format": "uri-reference"
+            },
+            "html": {
+              "description": "Relative path from this config to the html file. Like ./index.html",
+              "type": "string",
+              "format": "uri-reference"
+            }
+          },
+          "required": ["js", "html"]
+        },
+        "size": {
+          "properties": {
+            "width": {
+              "description": "Width of the richmedia unit.",
+              "type": "integer",
+              "minimum": 1
+            },
+            "height": {
+              "description": "Height of the richmedia unit.",
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "fonts": {
+          "description": "Define fonts and subsets of characters with richmediarc content objects or just a text string",
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "sources": {
+                  "description": "Define the font-path(s) to the font file(s) that you want to create a subset out of, woff or woff2 files for example",
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string",
+                      "format": "uri-reference"
+                    }
+                  ]
+                },
+                "subset": {
+                  "type": "object",
+                  "properties": {
+                    "glyphs": {
+                      "description": "Define a subset of characters with richmediarc content objects or just a text string",
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "required": ["glyphs"]
+                }
+              },
+              "required": ["sources", "subset"]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "additionalProperties": true,
+  "required": ["settings"]
+}

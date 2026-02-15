@@ -1,0 +1,264 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <title>Templates</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="static/material-design.css">
+  <link rel="stylesheet" href="static/style.css">
+
+  <script type="text/javascript">
+    window.onload = function() {
+      const adsBlocked = document.getElementById('ads-blocked');
+      const btDisabled = document.getElementById('bt-disabled');
+
+      btDisabled.addEventListener('click', () => {
+        adsBlocked.classList.add('hidden');
+      }, false);
+
+      let simulateBannerAd = document.createElement('div');
+      simulateBannerAd.className = 'textads banner-ads banner_ads ad-unit ad-zone ad-space adsbox';
+      simulateBannerAd.style.height = '1px';
+
+      document.body.appendChild(simulateBannerAd);
+
+      let width = simulateBannerAd.offsetHeight;
+
+      if (!width) adsBlocked.classList.remove('hidden');
+    };
+  </script>
+<body>
+
+<!-- Alert Adblock -->
+<div class='adblock-wrapper center hidden' id='ads-blocked'>
+  <div class='adblock-content-wrapper'>
+    <div class='adblock-content'>
+      <div class='center'>
+        <div class='image-container'>
+          <div class='image'>
+            <i class="fas fa-exclamation-circle"></i>
+            <h3>
+              Ads
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class='adblock-text'>
+        <h3>
+          Please disable your Ad Blocker!
+        </h3>
+        <p>
+          We know ads are annoying but please bear with us here & disable your ad blocker!
+        </p>
+      </div>
+      <div class='adblock-button'>
+        <button class='btn' id="bt-disabled">
+          I've disabled my Ad Blocker!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Alert Adblock -->
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+
+      {{#if settings.isGoogleSpreadsheetBanner}}
+        <button class="reload_btn material-icons">cloud_sync</button>
+      {{/if}}
+
+      <!--      <a class="reload_btn" href="reload/"></a>-->
+
+
+      <!-- Title -->
+      <span class="mdl-layout-title">
+        Preview
+      </span>
+
+      <!-- Layout Toggle -->
+      <!-- TODO replace with SVG -->
+      <div class="layout-toggle" onclick="toggleClickHandler()">
+        <button class="layout-toggle-button left material-icons{{#ifEquals query.list-view "true"}} active {{/ifEquals}}">
+          list
+        </button>
+        <button class="layout-toggle-button right material-icons{{#if query.list-view}} {{#ifEquals query.list-view
+                                                                                      "false"}} active {{/ifEquals}} {{else}} active {{/if}}">
+          grid_view
+        </button>
+      </div>
+
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+
+      <!-- FAB button with ripple -->
+      <button class="add-filter-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+              onclick="addFilterClickHandler()">
+        <i class="material-icons">add</i>
+      </button>
+
+      <!-- Filter for banner size -->
+      <div class="filter-container regular">
+        <div class="filter-wrapper">
+          <label for="banner-size-dropdown">Banner size:</label>
+          <select name="banner-size-dropdown" class="filter banner-size-dropdown" data-card-attribute="data-banner-size"
+                  onchange="filterChangeHandler()">
+            <option value="All">All</option>
+            {{#each banner}}
+              <option value="{{width}}x{{height}}">{{width}}x{{height}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <label class="modusLabel">Light Mode / Dark Mode:</label>
+      <label class="switch">
+        <input type="checkbox" id="checkboxDark" onclick="darkMode()">
+        <span class="slider round"></span>
+      </label>
+
+      <!-- Navigation. We hide it in small screens. -->
+      <!--<nav class="mdl-navigation mdl-layout&#45;&#45;large-screen-only">-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <!--<a class="mdl-navigation__link" href="">Link</a>-->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
+           x="0px" y="0px" width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50"
+           xml:space="preserve" class="svg-logo-mm">
+        <g>
+          <polygon
+            points="20.119,22.094 13.965,22.094 13.965,18.979 18.396,18.979 18.396,17.273 13.965,17.273 13.965,14.16 20.119,14.16    20.119,12.454 12.148,12.454 12.148,23.8 20.119,23.8  "></polygon>
+          <path
+            d="M19.977,27.024c-0.593-0.583-1.343-0.823-2.601-0.823h-0.002h-1.888h-0.002c-1.258,0-2.009,0.24-2.602,0.823   c-0.58,0.555-0.798,1.287-0.798,2.579v4.542c0,1.289,0.218,2.025,0.798,2.586c0.593,0.576,1.344,0.814,2.602,0.814h0.002h1.888   h0.002c1.258,0,2.008-0.238,2.601-0.814c0.58-0.561,0.799-1.297,0.799-2.586v-4.542C20.775,28.312,20.557,27.579,19.977,27.024z    M18.959,33.803c0,1.054-0.068,1.408-0.343,1.701c-0.27,0.272-0.589,0.336-1.696,0.336H15.94c-1.107,0-1.427-0.063-1.696-0.336   c-0.275-0.293-0.343-0.647-0.343-1.701v-3.854c0-1.061,0.067-1.416,0.343-1.704c0.27-0.268,0.589-0.339,1.696-0.339h0.979   c1.107,0,1.427,0.071,1.696,0.339c0.274,0.288,0.343,0.644,0.343,1.704V33.803z"></path>
+          <path
+            d="M29.525,13.277c-0.592-0.583-1.343-0.823-2.601-0.823h-0.002h-4.978V23.8h4.978h0.002c1.258,0,2.009-0.239,2.601-0.814   c0.58-0.561,0.799-1.297,0.799-2.587v-4.542C30.324,14.565,30.105,13.832,29.525,13.277z M28.507,20.056   c0,1.055-0.066,1.408-0.342,1.702c-0.27,0.272-0.589,0.336-1.696,0.336h-2.707V14.16h2.707c1.107,0,1.427,0.07,1.696,0.338   c0.275,0.288,0.342,0.644,0.342,1.704V20.056z"></path>
+          <polygon
+            points="38.891,14.16 38.891,12.454 31.711,12.454 31.711,14.16 34.393,14.16 34.393,22.094 31.711,22.094 31.711,23.8    38.891,23.8 38.891,22.094 36.209,22.094 36.209,14.16  "></polygon>
+          <path
+            d="M48.619,17.558l-2.125-4.604c-0.126-0.296-0.413-0.5-0.747-0.5c-0.011,0-2.259,0-2.269,0c-0.334,0-0.621,0.204-0.748,0.5   l-2.124,4.604c-0.11,0.241-0.184,0.515-0.184,0.799V23.8h1.817v-3.114h4.745V23.8h1.816v-5.443   C48.802,18.072,48.729,17.799,48.619,17.558z M46.985,18.979H42.24v-0.736l1.924-4.083h0.897l1.924,4.083V18.979z"></path>
+          <polygon
+            points="29.195,31.883 24.449,26.201 22.633,26.201 22.633,37.546 24.449,37.546 24.449,28.746 29.195,34.429    29.195,37.546 31.012,37.546 31.012,26.201 29.195,26.201  "></polygon>
+          <path
+            d="M46.177,31.062c-1.289-0.556-2.653-1.068-2.653-1.978c0-0.626,0.486-1.178,1.098-1.178h2.494c0.614,0,1.1,0.497,1.1,1.1   v0.298H50v-0.239c0-1.577-1.295-2.863-2.885-2.863h-2.422c-1.586,0-2.876,1.295-2.876,2.883c0,2.033,2.147,2.872,3.823,3.602   c1.29,0.556,2.654,1.068,2.654,1.978c0,0.626-0.486,1.177-1.099,1.177h-2.494c-0.613,0-1.1-0.496-1.1-1.099v-0.298h-1.785v0.239   c0,1.577,1.296,2.863,2.885,2.863h2.422c1.586,0,2.876-1.295,2.876-2.883C50,32.63,47.853,31.791,46.177,31.062z"></path>
+          <polygon
+            points="36.43,31.813 41.266,26.201 38.885,26.201 34.969,31.021 34.969,26.201 33.152,26.201 33.152,37.546    34.969,37.546 34.969,32.727 39.055,37.546 41.487,37.546  "></polygon>
+          <polyline
+            points="8.379,15.326 5.834,18.979 4.361,18.979 1.816,15.326 1.816,23.8 0,23.8 0,12.454 1.816,12.454 5.099,17.164    8.379,12.454 10.196,12.454 10.196,23.8 8.379,23.8 8.379,15.326  "></polyline>
+          <polyline
+            points="8.379,29.073 5.834,32.727 4.361,32.727 1.816,29.073 1.816,37.546 0,37.546 0,26.201 1.816,26.201 5.099,30.911    8.379,26.201 10.196,26.201 10.196,37.546 8.379,37.546 8.379,29.073  "></polyline>
+        </g>
+        </svg>
+      <!--</nav>-->
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Title</span>
+    <nav class="mdl-navigation">
+      {{#each banner}}
+        <a class="mdl-navigation__link" href="{{src}}index.html" target="_blank">{{name}}</a>
+      {{/each}}
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content {{#ifEquals query.list-view "true"}} list-view {{/ifEquals}}">
+      {{#each banner}}
+        <div class="card mdl-card mdl-shadow--2dp" style="width: {{width}}px;" data-banner-size="{{width}}x{{height}}">
+
+          <div class="mdl-card__media" style="width: {{width}}px; height: {{height}}px;">
+            <div class="loader"></div>
+            <iframe class="visible" src="{{src}}index.html" width="{{width}}" height="{{height}}"
+                    frameborder="0"></iframe>
+          </div>
+
+          <div class="mdl-card__actions mdl-card--border">
+              <div class="gsDevContainer">
+              </div>
+            <div class="iconsContainer">
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility"
+                 style="display: none">
+                <i class="material-icons">visibility</i>
+              </a>
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-visibility">
+                <i class="material-icons">info</i>
+              </a>
+
+<!--              {{#if isDevelopment}}-->
+<!--                <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-screenshot"-->
+<!--                   href="screenshot/{{src}}" download="{{name}}.png">-->
+<!--                  <i class="material-icons">add_a_photo</i>-->
+<!--                </a>-->
+<!--              {{/if}}-->
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-download" href="{{name}}.zip"
+                 download="{{name}}.zip">
+                <i class="material-icons">download</i>
+              </a>
+
+              <a class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect action-refresh">
+                <i class="material-icons">refresh</i>
+              </a>
+            </div>
+
+            <a class="mdl-button mdl-js-button mdl-js-ripple.mdl-card__media-effect action-new-page">
+              <span class="banner-name">
+                {{title}}
+              </span>
+              <i class="material-icons">open_in_new</i>
+            </a>
+            <!-- <div class="banner-info">
+              <span class="bold">File Size:</span><span> 120 Kb</span>
+            </div> -->
+            <div class="banner-info">
+              <span class="bold">Display Size:</span><span> {{width}}x{{height}}px</span>
+            </div>
+            <!-- <div class="banner-info">
+              <span class="bold">Date Modified:</span><span> 03/11/2020</span>
+            </div> -->
+          </div>
+        </div>
+      {{/each}}
+
+    </div>
+  </main>
+</div>
+
+<script src="static/gsap.min.js"></script>
+<script src="static/GSDevTools.min.js"></script>
+<script src="static/material-design.js"></script>
+<script src="static/main.js"></script>
+
+<script>
+    // Check if the IOS is in dark mode
+    let darkmodeCheck = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    darkModeStorage = localStorage.getItem("dark-mode");
+    if(darkmodeCheck && darkModeStorage ==='enabled'){
+      document.getElementById("checkboxDark").checked = true;
+      darkMode()
+    } else {
+      console.log('Currently not in dark mode');
+    };
+
+    {{#if settings.isGoogleSpreadsheetBanner}}
+    document.querySelector('.reload_btn').addEventListener('click', function(e) {
+      const xhttp = new XMLHttpRequest();
+      xhttp.open('GET', 'reload_dynamic_data', true);
+      xhttp.send();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log('server response is', this.responseText);
+          location.reload();
+        }
+      };
+    });
+    {{/if}}
+</script>
+</body>
+</html>
