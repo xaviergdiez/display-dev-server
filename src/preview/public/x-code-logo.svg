@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <!-- x-code.studio logo -->
+  <defs>
+    <style>
+      .logo-text { fill: #fff; font-family: 'Courier New', monospace; font-weight: 600; }
+      .logo-accent { fill: #00ff88; }
+    </style>
+  </defs>
+
+  <!-- X icon -->
+  <path class="logo-accent" d="M8,15 L15,25 L8,35 M22,15 L15,25 L22,35" stroke="#00ff88" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Text -->
+  <text class="logo-text" x="30" y="28" font-size="16">x-code</text>
+  <text class="logo-text" x="90" y="28" font-size="12" opacity="0.7">.studio</text>
+</svg>
